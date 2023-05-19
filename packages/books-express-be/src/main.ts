@@ -1,21 +1,62 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+import { ApolloServer, gql } from 'apollo-server';
 
-import express from 'express';
-import * as path from 'path';
+// Define your GraphQL schema
+const mocks = {
+  Date: () => "1/02/2025"
+}
 
-const app = express();
+const typeDefs = gql`
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+scalar Date
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to books-express-be!' });
+"""
+Object that describes the characteristics of a book
+"""
+type BookDay {
+  "Book id unique identifier"
+  id: ID!
+  date: Date!,
+  books: [Books]
+}
+
+enum Books {
+  PHYSICAL
+  EBOOK
+}
+
+type Query {
+  totalDays: Int!
+  alldays: [BookDay]!
+}
+
+input AddBookInput {
+  date: Date
+  books: [Books]
+}
+
+type RemoveBookPayload {
+  day: BookDay
+  removed: Boolean
+  totalBefore: Int
+  totalAfter: Int
+}
+
+
+type Mutation {
+  addBook(input: AddBookInput): BookDay!
+  removeBook(id: ID!): BookDay!
+}
+
+type Subscription {
+  newBook: BookDay
+}
+`;
+
+
+// Create an instance of ApolloServer
+const server = new ApolloServer({ typeDefs, mocks });
+
+// Start the server
+server.listen().then(({ url }) => {
+  console.log(`Server running at ${url}`);
 });
-
-const port = process.env.PORT || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
