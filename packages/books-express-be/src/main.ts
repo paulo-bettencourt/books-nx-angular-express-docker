@@ -1,4 +1,24 @@
 import { ApolloServer, gql } from 'apollo-server';
+import { GraphQLClient } from 'graphql-request';
+
+// Variables
+const endpoint = 'http://localhost:4000/graphql'; // Replace with your Apollo Server endpoint
+const client = new GraphQLClient(endpoint);
+
+const query = `
+  query {
+    hello
+  }
+`;
+
+client.request(query)
+  .then((data) => {
+    console.log(data); // Handle the response data
+  })
+  .catch((error) => {
+    console.error(error); // Handle any errors
+  });
+
 
 // Define your GraphQL schema
 const mocks = {
