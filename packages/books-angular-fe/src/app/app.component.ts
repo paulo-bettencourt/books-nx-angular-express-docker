@@ -7,8 +7,6 @@ import { Apollo, gql } from 'apollo-angular';
 import { Book } from '../models/book';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
-
-
 @Component({
   standalone: true,
   imports: [NxWelcomeComponent, RouterModule, CommonModule, FormsModule],
@@ -17,9 +15,8 @@ import { NxWelcomeComponent } from './nx-welcome.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  
   books: Book[] = [];
-  
+
   isYear = false;
   isTitle = false;
   isAuthor = false;
@@ -28,11 +25,18 @@ export class AppComponent {
   title = '';
   author = '';
 
-  constructor(private apollo: Apollo) { }
-  
-  queryBooksWithGraphQl(year = this.year, title = this.title, author = this.author) {
-    this.apollo.watchQuery({
-      query: gql`
+  checkboxes: any;
+
+  constructor(private apollo: Apollo) {}
+
+  queryBooksWithGraphQl(
+    year = this.year,
+    title = this.title,
+    author = this.author
+  ) {
+    this.apollo
+      .watchQuery({
+        query: gql`
       query ExampleQuery {
         books {
           ${year ? 'year' : ''}
@@ -40,25 +44,22 @@ export class AppComponent {
           ${author ? 'author' : ''}
         }
       }      
-      `
-    }).valueChanges.subscribe(({ data }: any) => {
-      this.books = data.books as Book[];
-    }
-    );
+      `,
+      })
+      .valueChanges.subscribe(({ data }: any) => {
+        this.books = data.books as Book[];
+      });
   }
 
   submit() {
     this.updateValuesFromCheckbox();
-    this.queryBooksWithGraphQl(this.year, this.author, this.title)
+    this.queryBooksWithGraphQl(this.year, this.author, this.title);
   }
 
   updateValuesFromCheckbox() {
-    this.isYear === true ? this.year = 'year' : this.year = '';
-    this.isAuthor === true ? this.author = 'author' : this.author = '';
-    this.isTitle === true ? this.title = 'title' : this.title = '';
-
+    this.isYear === true ? (this.year = 'year') : (this.year = '');
+    this.isAuthor === true ? (this.author = 'author') : (this.author = '');
+    this.isTitle === true ? (this.title = 'title') : (this.title = '');
   }
 
 }
-
-
