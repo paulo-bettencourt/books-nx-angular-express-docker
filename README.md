@@ -15,7 +15,7 @@ The Apollo Server processes the request and responds with the requested data pay
 ## Technologies used
 
 - Nx Workspace: A set of extensible dev tools for monorepos, providing a shared set of libraries and projects.
-Angular 16 (FE): A popular TypeScript-based frontend framework for building dynamic web applications.
+- Angular 16 (FE): A popular TypeScript-based frontend framework for building dynamic web applications.
 - NodeJS Apollo Server (BE): A GraphQL server implementation for Node.js that allows for efficient query execution.
 - GraphQL: A query language and runtime for APIs that provides a more efficient and flexible alternative to traditional REST APIs.
 - Angular Material (SCSS): A UI component library for Angular applications, providing pre-built and customizable UI components.
@@ -37,7 +37,7 @@ Angular 16 (FE): A popular TypeScript-based frontend framework for building dyna
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
-To execute both the frontend (FE) and backend (BE), run the command npm run start. This command will start both the FE and BE servers simultaneously.
+To execute both the frontend (FE) and backend (BE), run the command `npm run start`. This command will start both the FE and BE servers simultaneously.
 ## Remote caching
 
 Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
