@@ -27,8 +27,9 @@ export class AppComponent implements OnInit {
       query ExampleQuery {
         books {
           title
+          author
         }
-      }
+      }      
       `
     }).valueChanges.subscribe(({ data, error }: any) => {
       this.posts = data.books;

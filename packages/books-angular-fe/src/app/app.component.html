@@ -1,2 +1,13 @@
 <h1>Books Angular App</h1>
-<p>{{this.posts | json}}</p>
+<ng-container >
+  <table>
+    <tr>
+        <th>Author</th>
+        <th>title</th>
+    </tr>
+    <tr *ngFor="let book of posts">
+      <td>{{book.author}}</td>
+      <td>{{book.title}}</td>
+    </tr>
+  </table>
+</ng-container>
