@@ -1,26 +1,26 @@
 <h1>Nobel Literature Winners (2000-2021)</h1>
 
 <form action="/action_page.php">
-  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <input type="checkbox" id="year" name="year" value="year" [(ngModel)]="isYear">
   <label for="vehicle1"> Year</label><br>
-  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <input type="checkbox" id="author" name="author" value="author" [(ngModel)]="isTitle">
   <label for="vehicle2"> Author</label><br>
-  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <input type="checkbox" id="year" name="year" value="year" [(ngModel)]="isAuthor">
   <label for="vehicle3"> Book title</label><br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" (click)="submit()" *ngIf="isYear || isAuthor || isTitle">
 </form>
 
 <ng-container >
   <table>
     <tr>
-        <th>Year</th>
-        <th>Author</th>
-        <th>Book title</th>
+        <th *ngIf="year === 'year'">Year</th>
+        <th *ngIf="title === 'title'">Author</th>
+        <th *ngIf="author === 'author'">Book title</th>
     </tr>
     <tr *ngFor="let book of posts">
-      <td>{{book.year}}</td>
-      <td>{{book.author}}</td>
-      <td>{{book.title}}</td>
+      <td *ngIf="year === 'year'">{{book.year}}</td>
+      <td *ngIf="title === 'title'">{{book.author}}</td>
+      <td *ngIf="author === 'author'">{{book.title}}</td>
     </tr>
   </table>
 </ng-container>
