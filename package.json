@@ -5,7 +5,7 @@
   "scripts": {
     "books-angular-fe:dev:docker": "nx serve books-angular-fe --host=0.0.0.0",
     "books-express-be:dev:docker": "nx serve books-express-be --host=0.0.0.0",
-    "start": "nx serve books-angular-fe & nx serve books-express-be",
+    "start": "nx serve books-express-be & nx serve books-angular-fe",
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2015 browser module main"
@@ -65,6 +65,7 @@
     "@angular/platform-browser-dynamic": "~16.0.0",
     "@angular/router": "~16.0.0",
     "@apollo/client": "^3.7.14",
+    "@apollo/server": "^4.7.1",
     "apollo-angular": "^5.0.0",
     "apollo-server": "^3.12.0",
     "axios": "^1.0.0",

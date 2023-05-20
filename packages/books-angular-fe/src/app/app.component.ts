@@ -24,16 +24,14 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.apollo.watchQuery({
       query: gql`
-      query Query {
-        alldays {
-          books
-          date
-          id
+      query ExampleQuery {
+        books {
+          title
         }
       }
       `
     }).valueChanges.subscribe(({ data, error }: any) => {
-      this.posts = data.alldays;
+      this.posts = data.books;
       this.error = error;
       console.log("POSTS -> ", data)
     }
