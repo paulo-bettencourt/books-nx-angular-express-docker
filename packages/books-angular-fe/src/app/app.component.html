@@ -10,7 +10,7 @@
     <label for="vehicle2"> Author</label><br>
     <input type="checkbox" id="year" name="year" value="year" [(ngModel)]="isAuthor">
     <label for="vehicle3"> Book title</label><br><br>
-    <input id="submit" type="submit" value="Submit" (click)="submit()" *ngIf="isYear || isAuthor || isTitle">
+    <button mat-button id="submit" type="submit" value="Submit" (click)="submit()" *ngIf="isYear || isAuthor || isTitle">Submit</button>
   </form>
 </div>
 

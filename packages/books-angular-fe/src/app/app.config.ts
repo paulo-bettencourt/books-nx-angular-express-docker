@@ -1,5 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
 import { InMemoryCache } from '@apollo/client/cache';
 import { ApolloClientOptions } from '@apollo/client/core';
@@ -19,7 +21,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    importProvidersFrom(HttpClientModule, ApolloModule),
+    importProvidersFrom(BrowserModule, BrowserAnimationsModule, HttpClientModule, ApolloModule),
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
     {
       provide: APOLLO_OPTIONS,
