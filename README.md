@@ -8,7 +8,7 @@
 
 This GitHub repository contains an Nx workspace application that utilizes Angular for the frontend (FE) and NodeJS Apollo Server for the backend (BE), with GraphQL as the query language for API requests.
 
-The purpose of this application is to provide information about the "Nobel Literature Winners (2000-2021)". When a user selects a checkbox, a specific request is sent to the http://localhost:4000/graphql endpoint with the user-submitted information, including the year, author, and/or title.
+The purpose of this application is to provide information about the "Nobel Literature Winners (2000-2021)". When a user selects a checkbox, a specific request is sent to the `http://localhost:4000/graphql` endpoint with the user-submitted information, including the year, author, and/or title.
 
 The Apollo Server processes the request and responds with the requested data payload. The frontend table display then updates accordingly based on the received object payload.
 
@@ -37,8 +37,7 @@ Angular 16 (FE): A popular TypeScript-based frontend framework for building dyna
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
-Run `npm run start` to execute both FE and Be.
-
+To execute both the frontend (FE) and backend (BE), run the command npm run start. This command will start both the FE and BE servers simultaneously.
 ## Remote caching
 
 Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
