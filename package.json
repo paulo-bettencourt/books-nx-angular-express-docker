@@ -5,7 +5,7 @@
   "scripts": {
     "books-angular-fe:dev:docker": "nx serve books-angular-fe --host=0.0.0.0",
     "books-express-be:dev:docker": "nx serve books-express-be --host=0.0.0.0",
-    "start": "nx serve",
+    "start": "nx serve books-angular-fe & nx serve books-express-be",
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2015 browser module main"

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
@@ -8,7 +9,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [NxWelcomeComponent, RouterModule, CommonModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -32,9 +33,9 @@ export class AppComponent implements OnInit {
       }
       `
     }).valueChanges.subscribe(({ data, error }: any) => {
-      this.posts = data.posts;
+      this.posts = data.alldays;
       this.error = error;
-      console.log("error -> ", this.error)
+      console.log("POSTS -> ", data)
     }
     );
   }
