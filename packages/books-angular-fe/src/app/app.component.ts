@@ -22,12 +22,17 @@ export class AppComponent implements OnInit {
   constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
+    this.queryBooksWithGraphQl('title')
+  }
+  
+  queryBooksWithGraphQl(year?: string, title?: string, author?: string) {
     this.apollo.watchQuery({
       query: gql`
       query ExampleQuery {
         books {
-          title
-          author
+          ${year ? 'year' : ''}
+          ${title ? 'title' : ''}
+          ${author ? 'author' : ''}
         }
       }      
       `

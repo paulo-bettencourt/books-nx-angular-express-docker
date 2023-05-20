@@ -1,11 +1,24 @@
-<h1>Books Angular App</h1>
+<h1>Nobel Literature Winners (2000-2021)</h1>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> Year</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> Author</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> Book title</label><br><br>
+  <input type="submit" value="Submit">
+</form>
+
 <ng-container >
   <table>
     <tr>
+        <th>Year</th>
         <th>Author</th>
-        <th>title</th>
+        <th>Book title</th>
     </tr>
     <tr *ngFor="let book of posts">
+      <td>{{book.year}}</td>
       <td>{{book.author}}</td>
       <td>{{book.title}}</td>
     </tr>
