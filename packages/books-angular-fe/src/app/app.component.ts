@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 
@@ -9,12 +10,15 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule, CommonModule, FormsModule],
+  imports: [NxWelcomeComponent, RouterModule, CommonModule, FormsModule, MatTableModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
+  checked = false;
+
   books: Book[] = [];
 
   isYear = false;

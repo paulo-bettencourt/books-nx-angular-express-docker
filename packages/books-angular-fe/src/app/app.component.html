@@ -1,26 +1,32 @@
-<h1>Nobel Literature Winners (2000-2021)</h1>
+<div class="navbar">
+  <h1>Nobel Literature Winners (2000-2021)</h1>
+</div>
+  
+<div class="checkbox-container">
+  <form id="booksForm" action="/action_page.php">
+    <input type="checkbox" id="year" name="year" value="year" [(ngModel)]="isYear">
+    <label for="vehicle1"> Year</label><br>
+    <input type="checkbox" id="author" name="author" value="author" [(ngModel)]="isTitle">
+    <label for="vehicle2"> Author</label><br>
+    <input type="checkbox" id="year" name="year" value="year" [(ngModel)]="isAuthor">
+    <label for="vehicle3"> Book title</label><br><br>
+    <input id="submit" type="submit" value="Submit" (click)="submit()" *ngIf="isYear || isAuthor || isTitle">
+  </form>
+</div>
 
-<form id="booksForm" action="/action_page.php">
-  <input type="checkbox" id="year" name="year" value="year" [(ngModel)]="isYear">
-  <label for="vehicle1"> Year</label><br>
-  <input type="checkbox" id="author" name="author" value="author" [(ngModel)]="isTitle">
-  <label for="vehicle2"> Author</label><br>
-  <input type="checkbox" id="year" name="year" value="year" [(ngModel)]="isAuthor">
-  <label for="vehicle3"> Book title</label><br><br>
-  <input id="submit" type="submit" value="Submit" (click)="submit()" *ngIf="isYear || isAuthor || isTitle">
-</form>
-
-<ng-container *ngIf="isYear || isAuthor || isTitle">
-  <table>
-    <tr>
-        <th *ngIf="year === 'year'">Year</th>
-        <th *ngIf="title === 'title'">Author</th>
-        <th *ngIf="author === 'author'">Book title</th>
-    </tr>
-    <tr *ngFor="let book of books">
-      <td *ngIf="year === 'year'">{{book.year}}</td>
-      <td *ngIf="title === 'title'">{{book.author}}</td>
-      <td *ngIf="author === 'author'">{{book.title}}</td>
-    </tr>
-  </table>
-</ng-container>
+  <div class="container">
+  <ng-container *ngIf="isYear || isAuthor || isTitle" class="table-books">
+    <table>
+      <tr>
+          <th *ngIf="year === 'year'">Year</th>
+          <th *ngIf="title === 'title'">Author</th>
+          <th *ngIf="author === 'author'">Book title</th>
+      </tr>
+      <tr *ngFor="let book of books">
+        <td *ngIf="year === 'year'">{{book.year}}</td>
+        <td *ngIf="title === 'title'">{{book.author}}</td>
+        <td *ngIf="author === 'author'">{{book.title}}</td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
