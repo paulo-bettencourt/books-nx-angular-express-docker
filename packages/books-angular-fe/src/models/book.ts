@@ -1,4 +1,5 @@
 export interface Book {
+  year: string,
   title: string,
-  autor: string
+  author: string
 }

@@ -17,7 +17,7 @@
         <th *ngIf="title === 'title'">Author</th>
         <th *ngIf="author === 'author'">Book title</th>
     </tr>
-    <tr *ngFor="let book of posts">
+    <tr *ngFor="let book of books">
       <td *ngIf="year === 'year'">{{book.year}}</td>
       <td *ngIf="title === 'title'">{{book.author}}</td>
       <td *ngIf="author === 'author'">{{book.title}}</td>

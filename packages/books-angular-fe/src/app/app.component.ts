@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 
+import { Book } from '../models/book';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 
@@ -17,9 +18,8 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 })
 export class AppComponent {
   
-  posts: any[] = [];
-  error: any;
-
+  books: Book[] = [];
+  
   isYear = false;
   isTitle = false;
   isAuthor = false;
@@ -41,10 +41,8 @@ export class AppComponent {
         }
       }      
       `
-    }).valueChanges.subscribe(({ data, error }: any) => {
-      this.posts = data.books;
-      this.error = error;
-      console.log("POSTS -> ", data)
+    }).valueChanges.subscribe(({ data }: any) => {
+      this.books = data.books as Book[];
     }
     );
   }
